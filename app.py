@@ -2,10 +2,17 @@ import ultralytics
 from ultralytics import YOLO
 from PIL import Image
 import streamlit as st
+import gdown
 
 def engine(im):
 
-    model = YOLO("best (1).pt")
+    
+
+    url = 'https://drive.google.com/uc?id=1g6LwjT6pw0ZkyIdP-jFEBGYwpILDTwjA'
+    output = "trained_model.pt"
+    gdown.download(url, output, quiet=False)
+    
+    model = YOLO("trained_model.pt")
     results = model(im)  # results list
 
     # Show the results
